@@ -1,4 +1,4 @@
-package com.shiyanlou.lesson.domain;
+package com.shiyanlou.lesson8.domain;
 
 public class ResultObject {
 

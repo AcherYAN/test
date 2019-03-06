@@ -13,7 +13,7 @@
             select="com.shiyanlou.lesson5.mapper.UserMapper.selectByJobId" />
     </resultMap>
 
-    <select id="selectById" parameterType="Integer" resultMap="JobInfo">
+    <select id="selectById" parameterType="Integer" resultType="com.shiyanlou.lesson5.domain.Job" resultMap="JobInfo">
         select id, name, description
         from job where id = #{id};
     </select>

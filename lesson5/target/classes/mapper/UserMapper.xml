@@ -3,24 +3,24 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.shiyanlou.demo.mapper.UserMapper">
-    <resultMap type="com.shiyanlou.demo.domain.User" id="UserInfo">
+<mapper namespace="com.shiyanlou.lesson5.mapper.UserMapper">
+    <resultMap type="com.shiyanlou.lesson5.domain.User" id="UserInfo">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="gender" property="gender" />
         <result column="age" property="age" />
 
         <association column="card_id" property="card"
-            javaType="com.shiyanlou.demo.domain.Card"
-            select="com.shiyanlou.demo.mapper.CardMapper.selectById" />
+            javaType="com.shiyanlou.lesson5.domain.Card"
+            select="com.shiyanlou.lesson5.mapper.CardMapper.selectById" />
 
         <association column="job_id" property="job"
-            javaType="com.shiyanlou.demo.domain.Job"
-            select="com.shiyanlou.demo.mapper.JobMapper.selectBriefById" />
+            javaType="com.shiyanlou.lesson5.domain.Job"
+            select="com.shiyanlou.lesson5.mapper.JobMapper.selectBriefById" />
 
         <collection column="id" property="hobbies"
-            ofType="com.shiyanlou.demo.domain.Hobby"
-            select="com.shiyanlou.demo.mapper.UserHobbyMapper.findHobbyById" />
+            ofType="com.shiyanlou.lesson5.domain.Hobby"
+            select="com.shiyanlou.lesson5.mapper.UserHobbyMapper.findHobbyById" />
 
     </resultMap>
 
@@ -30,7 +30,7 @@
     </select>
 
     <select id="selectByJobId" parameterType="Integer"
-        resultType="com.shiyanlou.demo.domain.User">
+        resultType="com.shiyanlou.lesson5.domain.User">
         select id, name
         from user where job_id = #{job_id};
     </select>
@@ -41,7 +41,7 @@
         from user
     </select>
 
-    <insert id="insert" parameterType="com.shiyanlou.demo.domain.User"
+    <insert id="insert" parameterType="com.shiyanlou.lesson5.domain.User"
         useGeneratedKeys="true" keyProperty="id">
         insert into user(name, gender,
         age, job_id, card_id)
@@ -49,7 +49,7 @@
         #{card.id});
     </insert>
 
-    <update id="update" parameterType="com.shiyanlou.demo.domain.User">
+    <update id="update" parameterType="com.shiyanlou.lesson5.domain.User">
         update user
         <set>
             <if test="name != null and name != ''">
